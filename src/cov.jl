@@ -124,6 +124,13 @@ function mean_and_cov(x::DenseMatrix, wv::AbstractWeights, dims::Int=1;
 end
 
 """
+    cov2cor(C)
+
+Compute the correlation matrix from the covariance matrix `C`.
+"""
+cov2cor(C::AbstractMatrix) = cov2cor!(copy(C), sqrt.(diag(C)))
+
+"""
     cov2cor(C, s)
 
 Compute the correlation matrix from the covariance matrix `C` and a vector of standard
